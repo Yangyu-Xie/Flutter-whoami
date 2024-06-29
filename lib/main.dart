@@ -1,3 +1,5 @@
+import 'package:audioplayers/audioplayers.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,39 +15,58 @@ void main() {
   ));
 }
 
-class WhoAmIApp extends StatelessWidget {
+class WhoAmIApp extends StatefulWidget {
   const WhoAmIApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    String name = "Kagari";
-    String image_name = name.toLowerCase();
+  State<WhoAmIApp> createState() => _WhoAmIAppState();
+}
 
-    return Center(
-      child: Column(
-        children: [
-          Text(
-            "I am $name",
-            style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
-          ),
-          Expanded(
-              child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: TextButton(
-                style:
-                    TextButton.styleFrom(backgroundColor: Colors.transparent),
-                onPressed: () {
-                  if (name == "Kagari") {
-                    name = "Loki";
-                    print(name);
-                  } else if (name == "Loki") {
-                    name = "Kagari";
-                    print(name);
-                  }
-                },
-                child: Image.asset("images/$image_name.png")),
-          ))
-        ],
+class _WhoAmIAppState extends State<WhoAmIApp> {
+  String name = "Kagari";
+  MaterialColor colorOfBackground = Colors.yellow;
+  final player = AudioPlayer();
+
+  @override
+  Widget build(BuildContext context) {
+    String image_name = name.toLowerCase();
+    return Container(
+      color: colorOfBackground,
+      child: Center(
+        child: Column(
+          children: [
+            Text(
+              "I am $name",
+              style: TextStyle(fontSize: 100, fontWeight: FontWeight.bold),
+            ),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: TextButton(
+                  style:
+                      TextButton.styleFrom(backgroundColor: Colors.transparent),
+                  onPressed: () {
+                    if (name == "Kagari") {
+                      setState(() {
+                        player.play(AssetSource('audio/kagari.mp3'));
+                        name = "Loki";
+                        colorOfBackground = Colors.blueGrey;
+                        print(name);
+                      });
+                    } else if (name == "Loki") {
+                      setState(() {
+                        player.play(AssetSource('audio/loki.mp3'));
+                        name = "Kagari";
+                        colorOfBackground = Colors.yellow;
+
+                        print(name);
+                      });
+                    }
+                  },
+                  child: Image.asset("images/$image_name.png")),
+            ))
+          ],
+        ),
       ),
     );
   }

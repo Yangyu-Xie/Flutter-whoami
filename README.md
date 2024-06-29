@@ -1,16 +1,8 @@
 # whoami
+https://stackoverflow.com/questions/78660250/flutter-firebase-core-error-searching-for-inspections-failed-undefined-meth
 
-A new Flutter project.
+Encountered a issue where I can not launch the app in the iOS platform, 
+Adroid studio keep saying cocoapods having issues.
+tried various way to uninstall and re-install the cocoapods, but the issue could not be fixed.
+I was manage to fix the issue by execute the instruction on the above stackoverflow link.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
